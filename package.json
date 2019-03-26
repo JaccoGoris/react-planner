@@ -96,6 +96,12 @@
     "file-loader": "6.2.0",
     "gh-pages": "2.0.1",
     "immutable-devtools": "0.1.5",
+    "exports-loader": "^0.7.0",
+    "is-wsl": "1.1.0",
+    "import-loader": "^1.0.1",
+    "import-three-examples": "^2.1.6",
+    "imports-loader": "^0.8.0",
+    "open-browser-webpack-plugin": "0.0.5",
     "react": "16.8.5",
     "react-container-dimensions": "1.4.1",
     "react-dom": "16.8.5",
@@ -109,6 +115,6 @@
   "peerDependencies": {
     "react": "17.x",
     "react-dom": "17.x",
-    "three": "0.94.x"
+    "three": "0.102.x"
   }
 }
