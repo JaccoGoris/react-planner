@@ -56,6 +56,7 @@ export default {
   Reset: 'Reset',
   Rotation: 'Rotation',
   'Save project': 'Save project',
+  'Export project': 'Export project',
   Save: 'Save',
   'Scene Zoom Level': 'Scene Zoom Level',
   'Search Element': 'Search Element',
@@ -77,5 +78,5 @@ export default {
   'Would you want to start a new Project?':
     'Would you want to start a new Project?',
   'Zoom in': 'Zoom in',
-  'Zoom out': 'Zoom out',
-}
+  'Zoom out': 'Zoom out'
+};
