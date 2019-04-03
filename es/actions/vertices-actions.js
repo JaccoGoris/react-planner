@@ -1,8 +1,4 @@
-import {
-  BEGIN_DRAGGING_VERTEX,
-  UPDATE_DRAGGING_VERTEX,
-  END_DRAGGING_VERTEX,
-} from '../constants'
+import { BEGIN_DRAGGING_VERTEX, UPDATE_DRAGGING_VERTEX, END_DRAGGING_VERTEX } from '../constants';
 
 export function beginDraggingVertex(layerID, vertexID, x, y, snapMask) {
   return {
@@ -11,8 +7,8 @@ export function beginDraggingVertex(layerID, vertexID, x, y, snapMask) {
     vertexID: vertexID,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function updateDraggingVertex(x, y, snapMask) {
@@ -20,8 +16,8 @@ export function updateDraggingVertex(x, y, snapMask) {
     type: UPDATE_DRAGGING_VERTEX,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function endDraggingVertex(x, y, snapMask) {
@@ -29,6 +25,6 @@ export function endDraggingVertex(x, y, snapMask) {
     type: END_DRAGGING_VERTEX,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }

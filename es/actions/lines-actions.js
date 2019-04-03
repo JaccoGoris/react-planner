@@ -1,27 +1,18 @@
-import {
-  SELECT_LINE,
-  SELECT_TOOL_DRAWING_LINE,
-  BEGIN_DRAWING_LINE,
-  UPDATE_DRAWING_LINE,
-  END_DRAWING_LINE,
-  BEGIN_DRAGGING_LINE,
-  UPDATE_DRAGGING_LINE,
-  END_DRAGGING_LINE,
-} from '../constants'
+import { SELECT_LINE, SELECT_TOOL_DRAWING_LINE, BEGIN_DRAWING_LINE, UPDATE_DRAWING_LINE, END_DRAWING_LINE, BEGIN_DRAGGING_LINE, UPDATE_DRAGGING_LINE, END_DRAGGING_LINE } from '../constants';
 
 export function selectLine(layerID, lineID) {
   return {
     type: SELECT_LINE,
     layerID: layerID,
-    lineID: lineID,
-  }
+    lineID: lineID
+  };
 }
 
 export function selectToolDrawingLine(sceneComponentType) {
   return {
     type: SELECT_TOOL_DRAWING_LINE,
-    sceneComponentType: sceneComponentType,
-  }
+    sceneComponentType: sceneComponentType
+  };
 }
 
 export function beginDrawingLine(layerID, x, y, snapMask) {
@@ -30,8 +21,8 @@ export function beginDrawingLine(layerID, x, y, snapMask) {
     layerID: layerID,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function updateDrawingLine(x, y, snapMask) {
@@ -39,8 +30,8 @@ export function updateDrawingLine(x, y, snapMask) {
     type: UPDATE_DRAWING_LINE,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function endDrawingLine(x, y, snapMask) {
@@ -48,8 +39,8 @@ export function endDrawingLine(x, y, snapMask) {
     type: END_DRAWING_LINE,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function beginDraggingLine(layerID, lineID, x, y, snapMask) {
@@ -59,8 +50,8 @@ export function beginDraggingLine(layerID, lineID, x, y, snapMask) {
     lineID: lineID,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function updateDraggingLine(x, y, snapMask) {
@@ -68,8 +59,8 @@ export function updateDraggingLine(x, y, snapMask) {
     type: UPDATE_DRAGGING_LINE,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }
 
 export function endDraggingLine(x, y, snapMask) {
@@ -77,6 +68,6 @@ export function endDraggingLine(x, y, snapMask) {
     type: END_DRAGGING_LINE,
     x: x,
     y: y,
-    snapMask: snapMask,
-  }
+    snapMask: snapMask
+  };
 }

@@ -1,29 +1,29 @@
 function getEdgesOfSubgraphs(subgraphs, graph) {
-  var edges = []
+  var edges = [];
 
   subgraphs.forEach(function (component) {
-    edges.push([])
-    var vertices = getVerticesFromBiconnectedComponent(component)
-    var inserted = []
+    edges.push([]);
+    var vertices = getVerticesFromBiconnectedComponent(component);
+    var inserted = [];
     vertices.forEach(function (vertex) {
-      var adjacents = graph.adj[vertex]
+      var adjacents = graph.adj[vertex];
       adjacents.forEach(function (adj) {
         if (vertex <= adj && vertices.has(adj)) {
-          edges[edges.length - 1].push([vertex, adj])
+          edges[edges.length - 1].push([vertex, adj]);
         }
-      })
-    })
-  })
-  return edges
+      });
+    });
+  });
+  return edges;
 }
 
 function getVerticesFromBiconnectedComponent(component) {
-  var vertices = new Set()
+  var vertices = new Set();
   component.forEach(function (edge) {
-    vertices.add(edge.u)
-    vertices.add(edge.v)
-  })
-  return vertices
+    vertices.add(edge.u);
+    vertices.add(edge.v);
+  });
+  return vertices;
 }
 
-module.exports = getEdgesOfSubgraphs
+module.exports = getEdgesOfSubgraphs;

@@ -67,8 +67,7 @@ export default {
   texture: 'текстура',
   thickness: 'толщина',
   'Toggle Group Visibility': 'Переключить видимость группы',
-  "Un-chain all Group's Elements and remove Group":
-    'Удалить цепочку элементов группы и удалить группу',
+  "Un-chain all Group's Elements and remove Group": 'Удалить цепочку элементов группы и удалить группу',
   'Un-chain Element from Group': 'Unchain Element из группы',
   'Undo (CTRL-Z)': 'Отменить действие (CTRL-Z)',
   Unselect: 'Снять выделене',
@@ -76,5 +75,5 @@ export default {
   width: 'ширина',
   'Would you want to start a new Project?': 'Начать новый проект?',
   'Zoom in': 'Приблизить',
-  'Zoom out': 'Отдалить',
-}
+  'Zoom out': 'Отдалить'
+};

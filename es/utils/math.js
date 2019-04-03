@@ -4,13 +4,12 @@
  *  @return {number}
  */
 export function toFixedFloat(num) {
-  var precision =
-    arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6
+  var precision = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
 
   if (num && precision) {
-    return parseFloat(parseFloat(num).toFixed(precision))
+    return parseFloat(parseFloat(num).toFixed(precision));
   }
-  return 0
+  return 0;
 }
 
 /** @description Return absolute value of a number
@@ -18,10 +17,10 @@ export function toFixedFloat(num) {
  *  @return {number}
  */
 export var fAbs = function fAbs(n) {
-  var x = n
-  x < 0 && (x = ~x + 1)
-  return x
-}
+  var x = n;
+  x < 0 && (x = ~x + 1);
+  return x;
+};
 
 /** @description Multiply two matrices
  *  @param {Array} m1 Matrix 1
@@ -29,16 +28,16 @@ export var fAbs = function fAbs(n) {
  *  @return {Array}
  */
 export var multiplyMatrices = function multiplyMatrices(m1, m2) {
-  var result = []
+  var result = [];
   for (var i = 0; i < m1.length; i++) {
-    result[i] = []
+    result[i] = [];
     for (var j = 0; j < m2[0].length; j++) {
-      var sum = 0
+      var sum = 0;
       for (var k = 0; k < m1[0].length; k++) {
-        sum += m1[i][k] * m2[k][j]
+        sum += m1[i][k] * m2[k][j];
       }
-      result[i][j] = sum
+      result[i][j] = sum;
     }
   }
-  return result
-}
+  return result;
+};

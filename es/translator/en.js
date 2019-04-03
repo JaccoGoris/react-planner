@@ -56,6 +56,7 @@ export default {
   Reset: 'Reset',
   Rotation: 'Rotation',
   'Save project': 'Save project',
+  'Export project': 'Export project',
   Save: 'Save',
   'Scene Zoom Level': 'Scene Zoom Level',
   'Search Element': 'Search Element',
@@ -67,15 +68,13 @@ export default {
   texture: 'texture',
   thickness: 'thickness',
   'Toggle Group Visibility': 'Toggle Group Visibility',
-  "Un-chain all Group's Elements and remove Group":
-    "Un-chain all Group's Elements and remove Group",
+  "Un-chain all Group's Elements and remove Group": "Un-chain all Group's Elements and remove Group",
   'Un-chain Element from Group': 'Un-chain Element from Group',
   'Undo (CTRL-Z)': 'Undo (CTRL-Z)',
   Unselect: 'Unselect',
   Vertical: 'Vertical',
   width: 'width',
-  'Would you want to start a new Project?':
-    'Would you want to start a new Project?',
+  'Would you want to start a new Project?': 'Would you want to start a new Project?',
   'Zoom in': 'Zoom in',
-  'Zoom out': 'Zoom out',
-}
+  'Zoom out': 'Zoom out'
+};

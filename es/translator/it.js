@@ -67,8 +67,7 @@ export default {
   texture: 'texture',
   thickness: 'spessore',
   'Toggle Group Visibility': 'Varia la visibilità del Gruppo',
-  "Un-chain all Group's Elements and remove Group":
-    'Elimina il Gruppo e scollega tutti gli Elementi appartenenti',
+  "Un-chain all Group's Elements and remove Group": 'Elimina il Gruppo e scollega tutti gli Elementi appartenenti',
   'Un-chain Element from Group': "Scollega l'Elemento dal Gruppo",
   'Undo (CTRL-Z)': 'Annulla (CTRL-Z)',
   Unselect: 'Deseleziona',
@@ -76,5 +75,5 @@ export default {
   width: 'Larghezza',
   'Would you want to start a new Project?': 'Vuoi iniziare un nuovo progetto?',
   'Zoom in': 'Ingrandisci',
-  'Zoom out': 'Riduci',
-}
+  'Zoom out': 'Riduci'
+};
