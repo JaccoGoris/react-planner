@@ -1,5 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react'
+import {
+  string,
+  func,
+  number,
+  instanceOf,
+  arrayOf,
+  object,
+  element,
+  bool,
+  array,
+} from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -55,72 +65,101 @@ class ReactPlanner extends Component {
   }
 
   render() {
-    let { width, height, state, stateExtractor, ...props } = this.props
+    let {
+      width,
+      height,
+      state,
+      stateExtractor,
+      CustomUI,
+      ...props
+    } = this.props
 
     let contentW = width - toolbarW - sidebarW
-    let toolbarH = height - footerBarH
     let contentH = height - footerBarH
+    let toolbarH = height - footerBarH
     let sidebarH = height - footerBarH
+    if (CustomUI) {
+      contentW = width
+      contentH = height
+    }
 
     let extractedState = stateExtractor(state)
-
-    return (
-      <div style={{ ...wrapperStyle, height }}>
-        <Toolbar
-          width={toolbarW}
-          height={toolbarH}
-          state={extractedState}
-          {...props}
-        />
-        <Content
-          width={contentW}
-          height={contentH}
-          state={extractedState}
-          {...props}
-          onWheel={(event) => event.preventDefault()}
-        />
-        <Sidebar
-          width={sidebarW}
-          height={sidebarH}
-          state={extractedState}
-          {...props}
-        />
-        <FooterBar
-          width={width}
-          height={footerBarH}
-          state={extractedState}
-          {...props}
-        />
-      </div>
+    const content = (
+      <Content
+        width={contentW}
+        height={contentH}
+        state={extractedState}
+        {...props}
+        onWheel={(event) => event.preventDefault()}
+      />
     )
+
+    let planner
+    if (CustomUI) {
+      contentW = width
+      contentH = height
+      planner = (
+        <Fragment>
+          {CustomUI}
+          {content}
+        </Fragment>
+      )
+    } else {
+      planner = (
+        <Fragment>
+          <Toolbar
+            width={toolbarW}
+            height={toolbarH}
+            state={extractedState}
+            {...props}
+          />
+          {content}
+          <Sidebar
+            width={sidebarW}
+            height={sidebarH}
+            state={extractedState}
+            {...props}
+          />
+          <FooterBar
+            width={width}
+            height={footerBarH}
+            state={extractedState}
+            {...props}
+          />
+        </Fragment>
+      )
+    }
+
+    return <div style={{ ...wrapperStyle, height }}>{planner}</div>
   }
 }
 
 ReactPlanner.propTypes = {
-  translator: PropTypes.instanceOf(Translator),
-  catalog: PropTypes.instanceOf(Catalog),
-  allowProjectFileSupport: PropTypes.bool,
-  plugins: PropTypes.arrayOf(PropTypes.func),
-  autosaveKey: PropTypes.string,
-  autosaveDelay: PropTypes.number,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  stateExtractor: PropTypes.func.isRequired,
-  toolbarButtons: PropTypes.array,
-  sidebarComponents: PropTypes.array,
-  footerbarComponents: PropTypes.array,
-  customContents: PropTypes.object,
-  softwareSignature: PropTypes.string,
+  translator: instanceOf(Translator),
+  catalog: instanceOf(Catalog),
+  allowProjectFileSupport: bool,
+  plugins: arrayOf(func),
+  autosaveKey: string,
+  autosaveDelay: number,
+  width: number.isRequired,
+  height: number.isRequired,
+  stateExtractor: func.isRequired,
+  toolbarButtons: array,
+  sidebarComponents: array,
+  footerbarComponents: array,
+  customContents: object,
+  softwareSignature: string,
+  CustomUI: element,
 }
 
 ReactPlanner.contextTypes = {
-  store: PropTypes.object.isRequired,
+  store: object.isRequired,
 }
 
 ReactPlanner.childContextTypes = {
-  ...objectsMap(actions, () => PropTypes.object),
-  translator: PropTypes.object,
-  catalog: PropTypes.object,
+  ...objectsMap(actions, () => object),
+  translator: object,
+  catalog: object,
 }
 
 ReactPlanner.defaultProps = {
@@ -133,6 +172,7 @@ ReactPlanner.defaultProps = {
   sidebarComponents: [],
   footerbarComponents: [],
   customContents: {},
+  CustomUI: null,
 }
 
 //redux connect
