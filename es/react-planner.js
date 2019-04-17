@@ -191,13 +191,17 @@ var ReactPlanner = (function (_Component) {
           state = _props2.state,
           stateExtractor = _props2.stateExtractor,
           CustomUI = _props2.CustomUI,
-          props = _objectWithoutProperties(_props2, [
-            'width',
-            'height',
-            'state',
-            'stateExtractor',
-            'CustomUI',
-          ])
+          className = _props2.className,
+          props = _objectWithoutProperties(_props2, ['width', 'height', 'state', 'stateExtractor', 'CustomUI', 'className']);
+
+      var contentW = width - toolbarW - sidebarW;
+      var contentH = height - footerBarH;
+      var toolbarH = height - footerBarH;
+      var sidebarH = height - footerBarH;
+      if (CustomUI) {
+        contentW = width;
+        contentH = height;
+      }
 
         var contentW = width - toolbarW - sidebarW
         var contentH = height - footerBarH
@@ -207,24 +211,48 @@ var ReactPlanner = (function (_Component) {
           contentW = width
           contentH = height
         }
+      }));
 
-        var extractedState = stateExtractor(state)
-        var content = React.createElement(
-          Content,
-          _extends(
-            {
-              width: contentW,
-              height: contentH,
-              state: extractedState,
-            },
-            props,
-            {
-              onWheel: function onWheel(event) {
-                return event.preventDefault()
-              },
-            }
-          )
-        )
+      var planner = void 0;
+      if (CustomUI) {
+        contentW = width;
+        contentH = height;
+        planner = React.createElement(
+          Fragment,
+          null,
+          React.createElement(CustomUI, _extends({ state: extractedState }, props)),
+          content
+        );
+      } else {
+        planner = React.createElement(
+          Fragment,
+          null,
+          React.createElement(Toolbar, _extends({
+            width: toolbarW,
+            height: toolbarH,
+            state: extractedState
+          }, props)),
+          content,
+          React.createElement(Sidebar, _extends({
+            width: sidebarW,
+            height: sidebarH,
+            state: extractedState
+          }, props)),
+          React.createElement(FooterBar, _extends({
+            width: width,
+            height: footerBarH,
+            state: extractedState
+          }, props))
+        );
+      }
+
+      return React.createElement(
+        'div',
+        { className: className, style: _extends({}, wrapperStyle, { height: height }) },
+        planner
+      );
+    }
+  }]);
 
         var planner = void 0
         if (CustomUI) {
@@ -300,7 +328,8 @@ ReactPlanner.propTypes = {
   customContents: object,
   softwareSignature: string,
   CustomUI: element,
-}
+  className: string
+};
 
 ReactPlanner.contextTypes = {
   store: object.isRequired,
@@ -328,7 +357,8 @@ ReactPlanner.defaultProps = {
   footerbarComponents: [],
   customContents: {},
   CustomUI: null,
-}
+  className: ''
+};
 
 //redux connect
 function mapStateToProps(reduxState) {
