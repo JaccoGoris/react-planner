@@ -9,6 +9,7 @@ import {
   element,
   bool,
   array,
+  oneOfType,
 } from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -154,7 +155,7 @@ ReactPlanner.propTypes = {
   footerbarComponents: array,
   customContents: object,
   softwareSignature: string,
-  CustomUI: element,
+  CustomUI: oneOfType(element, func),
   className: string,
 }
 
