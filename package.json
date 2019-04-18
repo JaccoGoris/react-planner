@@ -115,6 +115,6 @@
   "peerDependencies": {
     "react": "17.x",
     "react-dom": "17.x",
-    "three": "0.102.x"
+    "three": "0.103.x"
   }
 }
