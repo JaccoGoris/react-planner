@@ -2,6 +2,7 @@ import {
   NEW_PROJECT,
   LOAD_PROJECT,
   SAVE_PROJECT,
+  EXPORT_PROJECT,
   OPEN_CATALOG,
   SELECT_TOOL_EDIT,
   UNSELECT_ALL,
@@ -51,6 +52,14 @@ export function newProject() {
 export function saveProject() {
   return {
     type: SAVE_PROJECT,
+  }
+}
+
+export function exportProject(context, catalog) {
+  return {
+    type: EXPORT_PROJECT,
+    context,
+    catalog,
   }
 }
 

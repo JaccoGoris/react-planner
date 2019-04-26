@@ -1,8 +1,9 @@
-import { history } from '../utils/export'
+import { history, ExportScene } from '../utils/export'
 import {
   LOAD_PROJECT,
   NEW_PROJECT,
   OPEN_CATALOG,
+  EXPORT_PROJECT,
   SELECT_TOOL_EDIT,
   MODE_IDLE,
   UNSELECT_ALL,
@@ -45,6 +46,10 @@ export default function (state, action) {
 
     case LOAD_PROJECT:
       return Project.loadProject(state, action.sceneJSON).updatedState
+
+    case EXPORT_PROJECT:
+      ExportScene({ state, context: action.context, catalog: action.catalog })
+      return state
 
     case OPEN_CATALOG:
       return Project.openCatalog(state).updatedState

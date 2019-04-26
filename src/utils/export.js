@@ -5,6 +5,7 @@ import * as SnapUtils from './snap'
 import * as SnapSceneUtils from './snap-scene'
 import * as history from './history'
 import * as ObjectUtils from './objects-utils'
+import ExportScene from './export-scene'
 import IDBroker from './id-broker'
 import NameGenerator from './name-generator'
 
@@ -18,6 +19,7 @@ export {
   IDBroker,
   NameGenerator,
   ObjectUtils,
+  ExportScene,
 }
 
 export default {
@@ -30,4 +32,5 @@ export default {
   IDBroker,
   NameGenerator,
   ObjectUtils,
+  ExportScene,
 }
