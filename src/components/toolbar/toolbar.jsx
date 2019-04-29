@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { MdSettings, MdUndo, MdDirectionsRun } from 'react-icons/md';
-import { FaFile, FaMousePointer, FaPlus } from 'react-icons/fa';
-import ToolbarButton from './toolbar-button';
-import ToolbarSaveButton from './toolbar-save-button';
-import ToolbarLoadButton from './toolbar-load-button';
-import ToolbarExportButton from './toolbar-export-button';
-import If from '../../utils/react-if';
+import React, { Component } from 'react'
+import { object, number, bool, array } from 'prop-types'
+import { MdSettings, MdUndo, MdDirectionsRun } from 'react-icons/md'
+import { FaFile, FaMousePointer, FaPlus } from 'react-icons/fa'
+import ToolbarButton from './toolbar-button'
+import ToolbarSaveButton from './toolbar-save-button'
+import ToolbarLoadButton from './toolbar-load-button'
+import ToolbarExportButton from './toolbar-export-button'
+import If from '../../utils/react-if'
 import {
   MODE_IDLE,
   MODE_3D_VIEW,
@@ -24,8 +24,8 @@ const iconTextStyle = {
   userSelect: 'none',
 }
 
-const Icon2D = ({ style }) => <p style={{ ...iconTextStyle, ...style }}>2D</p>;
-const Icon3D = ({ style }) => <p style={{ ...iconTextStyle, ...style }}>3D</p>;
+const Icon2D = ({ style }) => <p style={{ ...iconTextStyle, ...style }}>2D</p>
+const Icon3D = ({ style }) => <p style={{ ...iconTextStyle, ...style }}>3D</p>
 
 const ASIDE_STYLE = {
   backgroundColor: SharedStyle.PRIMARY_COLOR.main,
@@ -55,6 +55,7 @@ const mapButtonsCb = (el, ind) => {
 export default class Toolbar extends Component {
   constructor(props, context) {
     super(props, context)
+    console.log(context)
     this.state = {}
   }
 
@@ -64,7 +65,7 @@ export default class Toolbar extends Component {
       this.props.height !== nextProps.height ||
       this.props.width !== nextProps.width ||
       this.props.state.alterate !== nextProps.state.alterate
-    );
+    )
   }
 
   render() {
@@ -75,10 +76,10 @@ export default class Toolbar extends Component {
         height,
         toolbarButtons,
         allowProjectFileSupport,
-        catalog
+        catalog,
       },
-      context: { projectActions, viewer3DActions, translator }
-    } = this;
+      context: { projectActions, viewer3DActions, translator },
+    } = this
 
     let mode = state.get('mode')
     let alterate = state.get('alterate')
@@ -92,7 +93,7 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={false}
             tooltip={translator.t('New project')}
-            onClick={event =>
+            onClick={(event) =>
               confirm(translator.t('Would you want to start a new Project?'))
                 ? projectActions.newProject()
                 : null
@@ -100,12 +101,12 @@ export default class Toolbar extends Component {
           >
             <FaFile />
           </ToolbarButton>
-        )
+        ),
       },
       {
         index: 1,
         condition: allowProjectFileSupport,
-        dom: <ToolbarSaveButton state={state} />
+        dom: <ToolbarSaveButton state={state} />,
       },
       {
         index: 2,
@@ -116,12 +117,12 @@ export default class Toolbar extends Component {
             context={this.context}
             catalog={catalog}
           />
-        )
+        ),
       },
       {
         index: 3,
         condition: allowProjectFileSupport,
-        dom: <ToolbarLoadButton state={state} />
+        dom: <ToolbarLoadButton state={state} />,
       },
       {
         index: 4,
@@ -130,11 +131,11 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={[MODE_VIEWING_CATALOG].includes(mode)}
             tooltip={translator.t('Open catalog')}
-            onClick={event => projectActions.openCatalog()}
+            onClick={(event) => projectActions.openCatalog()}
           >
             <FaPlus />
           </ToolbarButton>
-        )
+        ),
       },
       {
         index: 5,
@@ -143,11 +144,11 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={[MODE_3D_VIEW].includes(mode)}
             tooltip={translator.t('3D View')}
-            onClick={event => viewer3DActions.selectTool3DView()}
+            onClick={(event) => viewer3DActions.selectTool3DView()}
           >
             <Icon3D />
           </ToolbarButton>
-        )
+        ),
       },
       {
         index: 6,
@@ -156,7 +157,7 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={[MODE_IDLE].includes(mode)}
             tooltip={translator.t('2D View')}
-            onClick={event => projectActions.setMode(MODE_IDLE)}
+            onClick={(event) => projectActions.setMode(MODE_IDLE)}
           >
             {[MODE_3D_FIRST_PERSON, MODE_3D_VIEW].includes(mode) ? (
               <Icon2D style={{ color: alterateColor }} />
@@ -164,7 +165,7 @@ export default class Toolbar extends Component {
               <FaMousePointer style={{ color: alterateColor }} />
             )}
           </ToolbarButton>
-        )
+        ),
       },
       {
         index: 7,
@@ -173,11 +174,11 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={[MODE_3D_FIRST_PERSON].includes(mode)}
             tooltip={translator.t('3D First Person')}
-            onClick={event => viewer3DActions.selectTool3DFirstPerson()}
+            onClick={(event) => viewer3DActions.selectTool3DFirstPerson()}
           >
             <MdDirectionsRun />
           </ToolbarButton>
-        )
+        ),
       },
       {
         index: 8,
@@ -186,11 +187,11 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={false}
             tooltip={translator.t('Undo (CTRL-Z)')}
-            onClick={event => projectActions.undo()}
+            onClick={(event) => projectActions.undo()}
           >
             <MdUndo />
           </ToolbarButton>
-        )
+        ),
       },
       {
         index: 9,
@@ -199,55 +200,56 @@ export default class Toolbar extends Component {
           <ToolbarButton
             active={[MODE_CONFIGURING_PROJECT].includes(mode)}
             tooltip={translator.t('Configure project')}
-            onClick={event => projectActions.openProjectConfigurator()}
+            onClick={(event) => projectActions.openProjectConfigurator()}
           >
             <MdSettings />
           </ToolbarButton>
-        )
-      }
-    ];
+        ),
+      },
+    ]
 
     sorter = sorter.concat(
       toolbarButtons.map((Component, key) => {
         return Component.prototype //if is a react component
           ? {
               condition: true,
-              dom: React.createElement(Component, { mode, state, key })
+              dom: React.createElement(Component, { mode, state, key }),
             }
           : {
               //else is a sortable toolbar button
               index: Component.index,
               condition: Component.condition,
-              dom: React.createElement(Component.dom, { mode, state, key })
-            };
+              dom: React.createElement(Component.dom, { mode, state, key }),
+            }
       })
-    );
+    )
 
     return (
       <aside
         style={{ ...ASIDE_STYLE, maxWidth: width, maxHeight: height }}
-        className='toolbar'
+        className="toolbar"
       >
         {sorter.sort(sortButtonsCb).map(mapButtonsCb)}
       </aside>
-    );
+    )
   }
 }
 
 Toolbar.propTypes = {
-  state: PropTypes.object.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  allowProjectFileSupport: PropTypes.bool.isRequired,
-  toolbarButtons: PropTypes.array,
+  state: object.isRequired,
+  width: number.isRequired,
+  height: number.isRequired,
+  allowProjectFileSupport: bool.isRequired,
+  toolbarButtons: array,
 }
 
 Toolbar.contextTypes = {
-  projectActions: PropTypes.object.isRequired,
-  viewer2DActions: PropTypes.object.isRequired,
-  viewer3DActions: PropTypes.object.isRequired,
-  linesActions: PropTypes.object.isRequired,
-  holesActions: PropTypes.object.isRequired,
-  itemsActions: PropTypes.object.isRequired,
-  translator: PropTypes.object.isRequired
-};
+  projectActions: object.isRequired,
+  viewer2DActions: object.isRequired,
+  viewer3DActions: object.isRequired,
+  linesActions: object.isRequired,
+  holesActions: object.isRequired,
+  itemsActions: object.isRequired,
+  translator: object.isRequired,
+  store: object.isRequired,
+}
