@@ -279,8 +279,9 @@ export default function Viewer2D(
         break
 
       case constants.MODE_DRAWING_LINE:
-        linesActions.endDrawingLine(x, y, state.snapMask)
-        linesActions.beginDrawingLine(layerID, x, y, state.snapMask)
+        linesActions.restartDrawingLine(layerID, x, y, state.snapMask)
+        // linesActions.endDrawingLine(x, y, state.snapMask);
+        // linesActions.beginDrawingLine(layerID, x, y, state.snapMask);
         break
 
       case constants.MODE_DRAWING_HOLE:
@@ -368,7 +369,7 @@ export default function Viewer2D(
     >
       <div
         style={{ gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }}
-      ></div>
+      />
       <div
         style={{
           gridRow: 1,
