@@ -1,4 +1,4 @@
-import { SELECT_LINE, SELECT_TOOL_DRAWING_LINE, BEGIN_DRAWING_LINE, UPDATE_DRAWING_LINE, END_DRAWING_LINE, BEGIN_DRAGGING_LINE, UPDATE_DRAGGING_LINE, END_DRAGGING_LINE } from '../constants';
+import { SELECT_LINE, SELECT_TOOL_DRAWING_LINE, BEGIN_DRAWING_LINE, UPDATE_DRAWING_LINE, END_DRAWING_LINE, RESTART_DRAWING_LINE, BEGIN_DRAGGING_LINE, UPDATE_DRAGGING_LINE, END_DRAGGING_LINE } from '../constants';
 
 export function selectLine(layerID, lineID) {
   return {
@@ -37,6 +37,16 @@ export function updateDrawingLine(x, y, snapMask) {
 export function endDrawingLine(x, y, snapMask) {
   return {
     type: END_DRAWING_LINE,
+    x: x,
+    y: y,
+    snapMask: snapMask
+  };
+}
+
+export function restartDrawingLine(layerID, x, y, snapMask) {
+  return {
+    type: RESTART_DRAWING_LINE,
+    layerID: layerID,
     x: x,
     y: y,
     snapMask: snapMask
