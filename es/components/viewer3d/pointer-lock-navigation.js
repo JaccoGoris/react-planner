@@ -1,30 +1,42 @@
-import PointerLockControls from './libs/pointer-lock-controls';
+import PointerLockControls from './libs/pointer-lock-controls'
 
 export function initPointerLock(camera, rendererElement) {
-
-  var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
+  var havePointerLock =
+    'pointerLockElement' in document ||
+    'mozPointerLockElement' in document ||
+    'webkitPointerLockElement' in document
 
   var pointerlockchange = function pointerlockchange(event) {
-    controls.enabled = !controls.enabled;
-  };
-
-  var requestPointerLockEvent = function requestPointerLockEvent(event) {
-    document.body.requestPointerLock = document.body.requestPointerLock || document.body.mozRequestPointerLock || document.body.webkitRequestPointerLock;
-    document.body.requestPointerLock();
-  };
-
-  if (havePointerLock) {
-
-    document.addEventListener('pointerlockchange', pointerlockchange, false);
-    document.addEventListener('mozpointerlockchange', pointerlockchange, false);
-    document.addEventListener('webkitpointerlockchange', pointerlockchange, false);
-    rendererElement.addEventListener('click', requestPointerLockEvent);
-  } else {
-    console.log('Your browser doesn\'t seem to support Pointer Lock API');
+    controls.enabled = !controls.enabled
   }
 
-  var controls = new PointerLockControls(camera);
-  return { controls: controls, pointerlockChangeEvent: pointerlockchange, requestPointerLockEvent: requestPointerLockEvent };
+  var requestPointerLockEvent = function requestPointerLockEvent(event) {
+    document.body.requestPointerLock =
+      document.body.requestPointerLock ||
+      document.body.mozRequestPointerLock ||
+      document.body.webkitRequestPointerLock
+    document.body.requestPointerLock()
+  }
+
+  if (havePointerLock) {
+    document.addEventListener('pointerlockchange', pointerlockchange, false)
+    document.addEventListener('mozpointerlockchange', pointerlockchange, false)
+    document.addEventListener(
+      'webkitpointerlockchange',
+      pointerlockchange,
+      false
+    )
+    rendererElement.addEventListener('click', requestPointerLockEvent)
+  } else {
+    console.log("Your browser doesn't seem to support Pointer Lock API")
+  }
+
+  var controls = new PointerLockControls(camera)
+  return {
+    controls: controls,
+    pointerlockChangeEvent: pointerlockchange,
+    requestPointerLockEvent: requestPointerLockEvent,
+  }
 }
 
 /* Funzione per il calcolo delle collisioni con gli oggetti contenuti all'interno di un array.
@@ -33,34 +45,38 @@ export function initPointerLock(camera, rendererElement) {
  * quale l'oggetto del pointer lock è orientato. */
 
 function collision(controls, collisionArray) {
-
-  var rotationMatrix = void 0;
-  var cameraDirection = controls.getDirection(new THREE.Vector3(0, 0, 0)).clone();
+  var rotationMatrix = void 0
+  var cameraDirection = controls
+    .getDirection(new THREE.Vector3(0, 0, 0))
+    .clone()
 
   if (controls.moveForward()) {
     // Nothing to do!
   } else if (controls.moveBackward()) {
-    rotationMatrix = new THREE.Matrix4();
-    rotationMatrix.makeRotationY(180 * Math.PI / 180);
+    rotationMatrix = new THREE.Matrix4()
+    rotationMatrix.makeRotationY((180 * Math.PI) / 180)
   } else if (controls.moveLeft()) {
-    rotationMatrix = new THREE.Matrix4();
-    rotationMatrix.makeRotationY(90 * Math.PI / 180);
+    rotationMatrix = new THREE.Matrix4()
+    rotationMatrix.makeRotationY((90 * Math.PI) / 180)
   } else if (controls.moveRight()) {
-    rotationMatrix = new THREE.Matrix4();
-    rotationMatrix.makeRotationY((360 - 90) * Math.PI / 180);
-  } else return;
+    rotationMatrix = new THREE.Matrix4()
+    rotationMatrix.makeRotationY(((360 - 90) * Math.PI) / 180)
+  } else return
 
   if (rotationMatrix !== undefined) {
-    cameraDirection.applyMatrix4(rotationMatrix);
+    cameraDirection.applyMatrix4(rotationMatrix)
   }
-  var rayCaster = new THREE.Raycaster(controls.getObject().position, cameraDirection.normalize());
-  var intersects = rayCaster.intersectObjects(collisionArray, true);
+  var rayCaster = new THREE.Raycaster(
+    controls.getObject().position,
+    cameraDirection.normalize()
+  )
+  var intersects = rayCaster.intersectObjects(collisionArray, true)
 
   if (intersects.length > 0 && intersects[0].distance < 10) {
-    return true;
+    return true
   }
 
-  return false;
+  return false
 }
 
 /* Funzione meno raffinata per il calcolo delle collisioni.
@@ -90,15 +106,14 @@ function collision(controls, collisionArray) {
  * (vedi esempio pointer lock) */
 
 function translateY(controls, ray, objects) {
-
-  controls.isOnObject(false);
-  ray.ray.origin.copy(controls.getObject().position);
-  ray.ray.origin.y -= 10;
-  var intersections = ray.intersectObjects(objects, true);
+  controls.isOnObject(false)
+  ray.ray.origin.copy(controls.getObject().position)
+  ray.ray.origin.y -= 10
+  var intersections = ray.intersectObjects(objects, true)
   if (intersections.length > 0) {
-    var distance = intersections[0].distance;
+    var distance = intersections[0].distance
     if (distance > 0 && distance < 10) {
-      controls.isOnObject(true);
+      controls.isOnObject(true)
     }
   }
 }
@@ -107,19 +122,19 @@ function translateY(controls, ray, objects) {
 
 function lockDirection(controls) {
   if (controls.moveForward()) {
-    controls.lockMoveForward(true);
+    controls.lockMoveForward(true)
   } else if (controls.moveBackward()) {
-    controls.lockMoveBackward(true);
+    controls.lockMoveBackward(true)
   } else if (controls.moveLeft()) {
-    controls.lockMoveLeft(true);
+    controls.lockMoveLeft(true)
   } else if (controls.moveRight()) {
-    controls.lockMoveRight(true);
+    controls.lockMoveRight(true)
   }
 }
 
 function unlockAllDirection(controls) {
-  controls.lockMoveForward(false);
-  controls.lockMoveBackward(false);
-  controls.lockMoveLeft(false);
-  controls.lockMoveRight(false);
+  controls.lockMoveForward(false)
+  controls.lockMoveBackward(false)
+  controls.lockMoveLeft(false)
+  controls.lockMoveRight(false)
 }

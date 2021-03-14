@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function PropertyHidden(_ref) {
   var value = _ref.value,
-      onUpdate = _ref.onUpdate,
-      configs = _ref.configs,
-      sourceElement = _ref.sourceElement,
-      internalState = _ref.internalState,
-      state = _ref.state;
+    onUpdate = _ref.onUpdate,
+    configs = _ref.configs,
+    sourceElement = _ref.sourceElement,
+    internalState = _ref.internalState,
+    state = _ref.state
 
-  return null;
+  return null
 }
 
 PropertyHidden.propTypes = {
@@ -18,5 +18,5 @@ PropertyHidden.propTypes = {
   configs: PropTypes.object.isRequired,
   sourceElement: PropTypes.object,
   internalState: PropTypes.object,
-  state: PropTypes.object.isRequired
-};
+  state: PropTypes.object.isRequired,
+}

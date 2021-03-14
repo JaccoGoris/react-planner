@@ -32,249 +32,263 @@ import {
   ADD_CIRCULAR_GUIDE,
   REMOVE_HORIZONTAL_GUIDE,
   REMOVE_VERTICAL_GUIDE,
-  REMOVE_CIRCULAR_GUIDE
-} from '../constants';
+  REMOVE_CIRCULAR_GUIDE,
+} from '../constants'
 
 export function loadProject(sceneJSON) {
   return {
     type: LOAD_PROJECT,
-    sceneJSON
-  };
+    sceneJSON,
+  }
 }
 
 export function newProject() {
   return {
-    type: NEW_PROJECT
-  };
+    type: NEW_PROJECT,
+  }
 }
 
 export function saveProject() {
   return {
-    type: SAVE_PROJECT
-  };
+    type: SAVE_PROJECT,
+  }
 }
 
 export function openCatalog() {
   return {
-    type: OPEN_CATALOG
-  };
+    type: OPEN_CATALOG,
+  }
 }
 
 export function changeCatalogPage(newPage, oldPage) {
   return {
     type: CHANGE_CATALOG_PAGE,
     newPage,
-    oldPage
-  };
+    oldPage,
+  }
 }
 
 export function goBackToCatalogPage(newPage) {
   return {
     type: GO_BACK_TO_CATALOG_PAGE,
-    newPage
-  };
+    newPage,
+  }
 }
 
 export function selectToolEdit() {
   return {
-    type: SELECT_TOOL_EDIT
-  };
+    type: SELECT_TOOL_EDIT,
+  }
 }
 
 export function unselectAll() {
   return {
-    type: UNSELECT_ALL
-  };
+    type: UNSELECT_ALL,
+  }
 }
-
 
 export function setProperties(properties) {
   return {
     type: SET_PROPERTIES,
-    properties
-  };
+    properties,
+  }
 }
 
 export function setItemsAttributes(itemsAttributes) {
-
-  itemsAttributes = itemsAttributes.set('rotation', parseFloat(itemsAttributes.get('rotation')));
+  itemsAttributes = itemsAttributes.set(
+    'rotation',
+    parseFloat(itemsAttributes.get('rotation'))
+  )
 
   return {
     type: SET_ITEMS_ATTRIBUTES,
-    itemsAttributes
-  };
+    itemsAttributes,
+  }
 }
 
 export function setLinesAttributes(linesAttributes) {
-
-  linesAttributes = linesAttributes.withMutations(attributes => {
-    attributes.setIn(['vertexOne', 'x'], parseFloat(linesAttributes.getIn(['vertexOne', 'x'])));
-    attributes.setIn(['vertexOne', 'y'], parseFloat(linesAttributes.getIn(['vertexOne', 'y'])));
-    attributes.setIn(['vertexTwo', 'x'], parseFloat(linesAttributes.getIn(['vertexTwo', 'x'])));
-    attributes.setIn(['vertexTwo', 'y'], parseFloat(linesAttributes.getIn(['vertexTwo', 'y'])));
-  });
+  linesAttributes = linesAttributes.withMutations((attributes) => {
+    attributes.setIn(
+      ['vertexOne', 'x'],
+      parseFloat(linesAttributes.getIn(['vertexOne', 'x']))
+    )
+    attributes.setIn(
+      ['vertexOne', 'y'],
+      parseFloat(linesAttributes.getIn(['vertexOne', 'y']))
+    )
+    attributes.setIn(
+      ['vertexTwo', 'x'],
+      parseFloat(linesAttributes.getIn(['vertexTwo', 'x']))
+    )
+    attributes.setIn(
+      ['vertexTwo', 'y'],
+      parseFloat(linesAttributes.getIn(['vertexTwo', 'y']))
+    )
+  })
 
   return {
     type: SET_LINES_ATTRIBUTES,
-    linesAttributes
-  };
+    linesAttributes,
+  }
 }
 
 export function setHolesAttributes(holesAttributes) {
-
-  holesAttributes = holesAttributes.set('offset', parseFloat(holesAttributes.get('offset')));
+  holesAttributes = holesAttributes.set(
+    'offset',
+    parseFloat(holesAttributes.get('offset'))
+  )
 
   return {
     type: SET_HOLES_ATTRIBUTES,
-    holesAttributes
-  };
+    holesAttributes,
+  }
 }
 
 export function remove() {
   return {
-    type: REMOVE
-  };
+    type: REMOVE,
+  }
 }
 
 export function undo() {
   return {
-    type: UNDO
-  };
+    type: UNDO,
+  }
 }
 
 export function rollback() {
   return {
-    type: ROLLBACK
-  };
+    type: ROLLBACK,
+  }
 }
 
 export function openProjectConfigurator() {
   return {
-    type: OPEN_PROJECT_CONFIGURATOR
-  };
+    type: OPEN_PROJECT_CONFIGURATOR,
+  }
 }
 
 export function setProjectProperties(properties) {
   return {
     type: SET_PROJECT_PROPERTIES,
-    properties
-  };
+    properties,
+  }
 }
 
 export function initCatalog(catalog) {
   return {
     type: INIT_CATALOG,
-    catalog
-  };
+    catalog,
+  }
 }
 
-export function updateMouseCoord(coords = {x, y}) {
+export function updateMouseCoord(coords = { x, y }) {
   return {
     type: UPDATE_MOUSE_COORDS,
-    coords
-  };
+    coords,
+  }
 }
 
 export function updateZoomScale(scale) {
   return {
     type: UPDATE_ZOOM_SCALE,
-    scale
-  };
+    scale,
+  }
 }
 
 export function toggleSnap(mask) {
   return {
     type: TOGGLE_SNAP,
-    mask
-  };
+    mask,
+  }
 }
 
 export function throwError(error) {
   return {
     type: THROW_ERROR,
-    error
-  };
+    error,
+  }
 }
 
 export function throwWarning(warning) {
   return {
     type: THROW_WARNING,
-    warning
-  };
+    warning,
+  }
 }
 
 export function copyProperties(properties) {
   return {
     type: COPY_PROPERTIES,
-    properties
-  };
+    properties,
+  }
 }
 
 export function pasteProperties() {
   return {
-    type: PASTE_PROPERTIES
-  };
+    type: PASTE_PROPERTIES,
+  }
 }
 
-export function pushLastSelectedCatalogElementToHistory( element ) {
+export function pushLastSelectedCatalogElementToHistory(element) {
   return {
     type: PUSH_LAST_SELECTED_CATALOG_ELEMENT_TO_HISTORY,
-    element
-  };
+    element,
+  }
 }
 
 export function setAlterateState() {
   return {
-    type: ALTERATE_STATE
-  };
+    type: ALTERATE_STATE,
+  }
 }
 
-export function setMode( mode ) {
+export function setMode(mode) {
   return {
     type: SET_MODE,
-    mode
-  };
+    mode,
+  }
 }
 
-export function addHorizontalGuide( coordinate ) {
+export function addHorizontalGuide(coordinate) {
   return {
     type: ADD_HORIZONTAL_GUIDE,
-    coordinate
-  };
+    coordinate,
+  }
 }
 
-export function addVerticalGuide( coordinate ) {
+export function addVerticalGuide(coordinate) {
   return {
     type: ADD_VERTICAL_GUIDE,
-    coordinate
-  };
+    coordinate,
+  }
 }
 
-export function addCircularGuide( x, y, radius ) {
+export function addCircularGuide(x, y, radius) {
   return {
     type: ADD_CIRCULAR_GUIDE,
     x,
     y,
-    radius
-  };
+    radius,
+  }
 }
-export function removeHorizontalGuide( guideID ) {
+export function removeHorizontalGuide(guideID) {
   return {
     type: REMOVE_HORIZONTAL_GUIDE,
-    guideID
-  };
+    guideID,
+  }
 }
 
-export function removeVerticalGuide( guideID ) {
+export function removeVerticalGuide(guideID) {
   return {
     type: REMOVE_VERTICAL_GUIDE,
-    guideID
-  };
+    guideID,
+  }
 }
 
-export function removeCircularGuide( guideID ) {
+export function removeCircularGuide(guideID) {
   return {
     type: REMOVE_CIRCULAR_GUIDE,
-    guideID
-  };
+    guideID,
+  }
 }

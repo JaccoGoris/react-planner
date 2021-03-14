@@ -1,33 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormLabel, FormNumberInput } from '../../components/style/export';
-import PropertyStyle from './shared-property-style';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { FormLabel, FormNumberInput } from '../../components/style/export'
+import PropertyStyle from './shared-property-style'
 
 export default function PropertyNumber(_ref) {
   var value = _ref.value,
-      onUpdate = _ref.onUpdate,
-      onValid = _ref.onValid,
-      configs = _ref.configs,
-      sourceElement = _ref.sourceElement,
-      internalState = _ref.internalState,
-      state = _ref.state;
-
+    onUpdate = _ref.onUpdate,
+    onValid = _ref.onValid,
+    configs = _ref.configs,
+    sourceElement = _ref.sourceElement,
+    internalState = _ref.internalState,
+    state = _ref.state
 
   var update = function update(val) {
-    var number = parseFloat(val);
+    var number = parseFloat(val)
 
     if (isNaN(number)) {
-      number = 0;
+      number = 0
     }
 
     if (configs.hook) {
-      return configs.hook(number, sourceElement, internalState, state).then(function (_val) {
-        return onUpdate(_val);
-      });
+      return configs
+        .hook(number, sourceElement, internalState, state)
+        .then(function (_val) {
+          return onUpdate(_val)
+        })
     }
 
-    return onUpdate(number);
-  };
+    return onUpdate(number)
+  }
 
   return React.createElement(
     'table',
@@ -41,11 +42,7 @@ export default function PropertyNumber(_ref) {
         React.createElement(
           'td',
           { style: PropertyStyle.firstTdStyle },
-          React.createElement(
-            FormLabel,
-            null,
-            configs.label
-          )
+          React.createElement(FormLabel, null, configs.label)
         ),
         React.createElement(
           'td',
@@ -53,15 +50,16 @@ export default function PropertyNumber(_ref) {
           React.createElement(FormNumberInput, {
             value: value,
             onChange: function onChange(event) {
-              return update(event.target.value);
+              return update(event.target.value)
             },
             onValid: onValid,
             min: configs.min,
-            max: configs.max })
+            max: configs.max,
+          })
         )
       )
     )
-  );
+  )
 }
 
 PropertyNumber.propTypes = {
@@ -71,5 +69,5 @@ PropertyNumber.propTypes = {
   configs: PropTypes.object.isRequired,
   sourceElement: PropTypes.object,
   internalState: PropTypes.object,
-  state: PropTypes.object.isRequired
-};
+  state: PropTypes.object.isRequired,
+}

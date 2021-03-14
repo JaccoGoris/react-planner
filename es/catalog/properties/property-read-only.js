@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FormLabel } from '../../components/style/export';
-import PropertyStyle from './shared-property-style';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { FormLabel } from '../../components/style/export'
+import PropertyStyle from './shared-property-style'
 
 export default function PropertyReadOnly(_ref) {
   var value = _ref.value,
-      onUpdate = _ref.onUpdate,
-      configs = _ref.configs,
-      sourceElement = _ref.sourceElement,
-      internalState = _ref.internalState,
-      state = _ref.state;
+    onUpdate = _ref.onUpdate,
+    configs = _ref.configs,
+    sourceElement = _ref.sourceElement,
+    internalState = _ref.internalState,
+    state = _ref.state
 
   return React.createElement(
     'table',
@@ -23,24 +23,12 @@ export default function PropertyReadOnly(_ref) {
         React.createElement(
           'td',
           { style: PropertyStyle.firstTdStyle },
-          React.createElement(
-            FormLabel,
-            null,
-            configs.label
-          )
+          React.createElement(FormLabel, null, configs.label)
         ),
-        React.createElement(
-          'td',
-          null,
-          React.createElement(
-            'div',
-            null,
-            value
-          )
-        )
+        React.createElement('td', null, React.createElement('div', null, value))
       )
     )
-  );
+  )
 }
 
 PropertyReadOnly.propTypes = {
@@ -49,5 +37,5 @@ PropertyReadOnly.propTypes = {
   configs: PropTypes.object.isRequired,
   sourceElement: PropTypes.object,
   internalState: PropTypes.object,
-  state: PropTypes.object.isRequired
-};
+  state: PropTypes.object.isRequired,
+}

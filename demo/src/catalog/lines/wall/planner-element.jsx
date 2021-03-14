@@ -1,4 +1,4 @@
-import {ElementsFactories} from 'react-planner';
+import { ElementsFactories } from 'react-planner'
 
 const info = {
   title: 'wall',
@@ -7,9 +7,9 @@ const info = {
   image: require('./wall.png'),
   visibility: {
     catalog: true,
-    layerElementsVisible: true
-  }
-};
+    layerElementsVisible: true,
+  },
+}
 
 const textures = {
   bricks: {
@@ -22,11 +22,11 @@ const textures = {
       lengthRepeatScale: 0.01,
       heightRepeatScale: 0.01,
       normalScaleX: 0.8,
-      normalScaleY: 0.8
-    }
+      normalScaleY: 0.8,
+    },
   },
   painted: {
-    name:'Painted',
+    name: 'Painted',
     uri: require('./textures/painted.jpg'),
     lengthRepeatScale: 0.01,
     heightRepeatScale: 0.01,
@@ -35,10 +35,9 @@ const textures = {
       lengthRepeatScale: 0.01,
       heightRepeatScale: 0.01,
       normalScaleX: 0.4,
-      normalScaleY: 0.4
-    }
+      normalScaleY: 0.4,
+    },
   },
-};
+}
 
-export default ElementsFactories.WallFactory('wall', info, textures);
-
+export default ElementsFactories.WallFactory('wall', info, textures)

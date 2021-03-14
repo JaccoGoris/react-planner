@@ -1,9 +1,7 @@
-import * as TabsStyle from './tabs.css';
+import * as TabsStyle from './tabs.css'
 
-export {
-  TabsStyle
-};
+export { TabsStyle }
 
 export default {
-  TabsStyle
-};
+  TabsStyle,
+}

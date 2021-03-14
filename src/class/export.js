@@ -1,12 +1,12 @@
-import Project from './project';
-import Group from './group';
-import Layer from './layer';
-import Line from './line';
-import Hole from './hole';
-import Vertex from './vertex';
-import Area from './area';
-import Item from './item';
-import { HorizontalGuide, VerticalGuide } from './guide';
+import Project from './project'
+import Group from './group'
+import Layer from './layer'
+import Line from './line'
+import Hole from './hole'
+import Vertex from './vertex'
+import Area from './area'
+import Item from './item'
+import { HorizontalGuide, VerticalGuide } from './guide'
 
 export {
   Project,
@@ -18,8 +18,8 @@ export {
   Area,
   Item,
   HorizontalGuide,
-  VerticalGuide
-};
+  VerticalGuide,
+}
 
 export default {
   Project,
@@ -31,5 +31,5 @@ export default {
   Area,
   Item,
   HorizontalGuide,
-  VerticalGuide
-};
+  VerticalGuide,
+}

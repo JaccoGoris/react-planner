@@ -42,7 +42,10 @@ export default class Translator {
 
     let translatedPhrase = translation[phrase]
 
-    translatedPhrase = translatedPhrase.replace(/{(\d+)}/g, function(match, number) {
+    translatedPhrase = translatedPhrase.replace(/{(\d+)}/g, function (
+      match,
+      number
+    ) {
       return typeof params[number] != 'undefined' ? params[number] : match
     })
 
@@ -55,7 +58,9 @@ export default class Translator {
     if (this.translations.hasOwnProperty(locale)) {
       this.locale = locale
     } else {
-      console.warn(`locale '${locale}' not available, switch to ${DEFAULT_LOCALE}`)
+      console.warn(
+        `locale '${locale}' not available, switch to ${DEFAULT_LOCALE}`
+      )
       this.locale = DEFAULT_LOCALE.toLowerCase()
     }
   }

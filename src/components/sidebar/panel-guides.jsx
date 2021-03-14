@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Panel from './panel';
-import * as SharedStyle from '../../shared-style';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { FaPencil, FaTrash, FaTimes } from 'react-icons/fa';
-import { FormNumberInput } from '../../components/style/export';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Panel from './panel'
+import * as SharedStyle from '../../shared-style'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { FaPencil, FaTrash, FaTimes } from 'react-icons/fa'
+import { FormNumberInput } from '../../components/style/export'
 
-const tabStyle = { margin: '1em' };
+const tabStyle = { margin: '1em' }
 
 const iconStyle = {
   fontSize: '14px',
   margin: '2px',
-  cursor: 'pointer'
-};
+  cursor: 'pointer',
+}
 
 const addGuideStyle = {
   cursor: 'pointer',
-  height: '2em'
-};
+  height: '2em',
+}
 
 const tableTabStyle = {
   width: '100%',
-  textAlign: 'center'
-};
+  textAlign: 'center',
+}
 
 export default class PanelGuides extends Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
 
     this.state = {
       addHGVisible: true,
       addVGVisible: true,
-      addCGVisible: true
-    };
+      addCGVisible: true,
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -42,17 +42,17 @@ export default class PanelGuides extends Component {
       this.state.addCGVisible !== nextState.addCGVisible ||
       this.props.state.getIn(['scene', 'guides']).hashCode() !==
         nextProps.state.getIn(['scene', 'guides']).hashCode()
-    );
+    )
   }
 
   render() {
-    let { state } = this.props;
-    let { projectActions, translator } = this.context;
-    let { guides } = state.scene;
+    let { state } = this.props
+    let { projectActions, translator } = this.context
+    let { guides } = state.scene
 
     return (
       <Panel name={translator.t('Guides')}>
-        <Tabs id='guidesTabs' style={tabStyle}>
+        <Tabs id="guidesTabs" style={tabStyle}>
           <TabList>
             <Tab>{translator.t('Horizontal')}</Tab>
             <Tab>{translator.t('Vertical')}</Tab>
@@ -74,32 +74,32 @@ export default class PanelGuides extends Component {
                           {/*<FaPencil style={iconStyle} />*/}
                           <FaTrash
                             style={iconStyle}
-                            onClick={e =>
+                            onClick={(e) =>
                               projectActions.removeHorizontalGuide(hgKey)
                             }
                           />
                         </td>
                       </tr>
-                    );
+                    )
                   })}
                 {this.state.addHGVisible ? (
                   <tr>
                     <td
-                      colSpan='3'
+                      colSpan="3"
                       style={addGuideStyle}
-                      onClick={e => this.setState({ addHGVisible: false })}
+                      onClick={(e) => this.setState({ addHGVisible: false })}
                     >
                       {translator.t('+ Add Horizontal Giude')}
                     </td>
                   </tr>
                 ) : (
                   <tr>
-                    <td colSpan='2'>
+                    <td colSpan="2">
                       <FormNumberInput
                         value={0}
-                        onChange={e => {
-                          projectActions.addHorizontalGuide(e.target.value);
-                          return this.setState({ addHGVisible: true });
+                        onChange={(e) => {
+                          projectActions.addHorizontalGuide(e.target.value)
+                          return this.setState({ addHGVisible: true })
                         }}
                         min={0}
                         max={this.props.state.getIn(['scene', 'height'])}
@@ -108,7 +108,7 @@ export default class PanelGuides extends Component {
                     <td>
                       <FaTimes
                         style={iconStyle}
-                        onClick={e => this.setState({ addHGVisible: true })}
+                        onClick={(e) => this.setState({ addHGVisible: true })}
                       />
                     </td>
                   </tr>
@@ -131,32 +131,32 @@ export default class PanelGuides extends Component {
                           {/*<FaPencil style={iconStyle} />*/}
                           <FaTrash
                             style={iconStyle}
-                            onClick={e =>
+                            onClick={(e) =>
                               projectActions.removeVerticalGuide(hgKey)
                             }
                           />
                         </td>
                       </tr>
-                    );
+                    )
                   })}
                 {this.state.addVGVisible ? (
                   <tr>
                     <td
-                      colSpan='3'
+                      colSpan="3"
                       style={addGuideStyle}
-                      onClick={e => this.setState({ addVGVisible: false })}
+                      onClick={(e) => this.setState({ addVGVisible: false })}
                     >
                       {translator.t('+ Add Vertical Giude')}
                     </td>
                   </tr>
                 ) : (
                   <tr>
-                    <td colSpan='2'>
+                    <td colSpan="2">
                       <FormNumberInput
                         value={0}
-                        onChange={e => {
-                          projectActions.addVerticalGuide(e.target.value);
-                          return this.setState({ addVGVisible: true });
+                        onChange={(e) => {
+                          projectActions.addVerticalGuide(e.target.value)
+                          return this.setState({ addVGVisible: true })
                         }}
                         min={0}
                         max={this.props.state.getIn(['scene', 'height'])}
@@ -165,7 +165,7 @@ export default class PanelGuides extends Component {
                     <td>
                       <FaTimes
                         style={iconStyle}
-                        onClick={e => this.setState({ addVGVisible: true })}
+                        onClick={(e) => this.setState({ addVGVisible: true })}
                       />
                     </td>
                   </tr>
@@ -178,15 +178,15 @@ export default class PanelGuides extends Component {
           </TabPanel>*/}
         </Tabs>
       </Panel>
-    );
+    )
   }
 }
 
 PanelGuides.propTypes = {
-  state: PropTypes.object.isRequired
-};
+  state: PropTypes.object.isRequired,
+}
 
 PanelGuides.contextTypes = {
   translator: PropTypes.object.isRequired,
-  projectActions: PropTypes.object.isRequired
-};
+  projectActions: PropTypes.object.isRequired,
+}

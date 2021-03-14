@@ -1,9 +1,9 @@
-let shortid = require('shortid');
+let shortid = require('shortid')
 
 export class IDBroker {
   static acquireID() {
-    return shortid.generate();
+    return shortid.generate()
   }
 }
 
-export default IDBroker;
+export default IDBroker

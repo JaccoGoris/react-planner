@@ -1,16 +1,16 @@
-import Button from './button';
-import CancelButton from './cancel-button';
-import ContentContainer from './content-container';
-import ContentTitle from './content-title';
-import DeleteButton from './delete-button';
-import FormBlock from './form-block';
-import FormColorInput from './form-color-input';
-import FormLabel from './form-label';
-import FormNumberInput from './form-number-input';
-import FormSelect from './form-select';
-import FormSlider from './form-slider';
-import FormSubmitButton from './form-submit-button';
-import FormTextInput from './form-text-input';
+import Button from './button'
+import CancelButton from './cancel-button'
+import ContentContainer from './content-container'
+import ContentTitle from './content-title'
+import DeleteButton from './delete-button'
+import FormBlock from './form-block'
+import FormColorInput from './form-color-input'
+import FormLabel from './form-label'
+import FormNumberInput from './form-number-input'
+import FormSelect from './form-select'
+import FormSlider from './form-slider'
+import FormSubmitButton from './form-submit-button'
+import FormTextInput from './form-text-input'
 
 export {
   Button,
@@ -25,8 +25,8 @@ export {
   FormSelect,
   FormSlider,
   FormSubmitButton,
-  FormTextInput
-};
+  FormTextInput,
+}
 
 export default {
   Button,
@@ -41,5 +41,5 @@ export default {
   FormSelect,
   FormSlider,
   FormSubmitButton,
-  FormTextInput
-};
+  FormTextInput,
+}

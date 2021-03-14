@@ -1,19 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import If from '../../utils/react-if';
-import * as sharedStyles from '../../shared-style';
+import React from 'react'
+import PropTypes from 'prop-types'
+import If from '../../utils/react-if'
+import * as sharedStyles from '../../shared-style'
 
-const cx = 0;
-const cy = 0;
-const radius = 5;
+const cx = 0
+const cy = 0
+const radius = 5
 
 const STYLE_CIRCLE = {
   fill: sharedStyles.MATERIAL_COLORS[500].orange,
   stroke: sharedStyles.MATERIAL_COLORS[500].orange,
-  cursor: 'default'
-};
+  cursor: 'default',
+}
 
-export default function Group({ layer, group, scene, catalog }, {translator}) {
+export default function Group(
+  { layer, group, scene, catalog },
+  { translator }
+) {
   return (
     <g
       data-element-root
@@ -34,7 +37,7 @@ export default function Group({ layer, group, scene, catalog }, {translator}) {
           data-part="rotation-anchor"
         >
           <circle cx={cx} cy={cy} r={radius} style={STYLE_CIRCLE}>
-            <title>{translator.t('Group\'s Barycenter')}</title>
+            <title>{translator.t("Group's Barycenter")}</title>
           </circle>
         </g>
       </If>
@@ -46,9 +49,9 @@ Group.propTypes = {
   group: PropTypes.object.isRequired,
   layer: PropTypes.object.isRequired,
   scene: PropTypes.object.isRequired,
-  catalog: PropTypes.object.isRequired
-};
+  catalog: PropTypes.object.isRequired,
+}
 
 Group.contextTypes = {
-  translator: PropTypes.object.isRequired
-};
+  translator: PropTypes.object.isRequired,
+}
