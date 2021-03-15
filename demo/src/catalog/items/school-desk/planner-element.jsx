@@ -144,7 +144,9 @@ export default {
       p6.position.x += 0.4
 
       // material = new Three.MeshLambertMaterial({color: 0x9b8c75});
-      let texture = new Three.TextureLoader().load(require('./wood.jpg'))
+      let texture = new Three.TextureLoader().load(
+        require('./wood.jpg').default
+      )
       let materialTexture = new Three.MeshLambertMaterial({ map: texture })
 
       let roundedRectShape = new Three.Shape()
@@ -286,7 +288,7 @@ export default {
     let grey = new Three.MeshLambertMaterial({ color: 0xd9d7d7 })
     let black = new Three.MeshLambertMaterial({ color: 0x000000 })
 
-    let texture = new Three.TextureLoader().load(require('./wood.jpg'))
+    let texture = new Three.TextureLoader().load(require('./wood.jpg').default)
     let materialTexture = new Three.MeshLambertMaterial({ map: texture })
 
     let newDepth = 0.5

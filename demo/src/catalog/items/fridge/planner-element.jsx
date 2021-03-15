@@ -6,8 +6,8 @@ const DEPTH = 80
 const HEIGHT = 180
 
 const textureLoader = new Three.TextureLoader()
-const logoTexture = textureLoader.load(require('./logo.jpg'))
-const steelTexture = textureLoader.load(require('./steel.jpg'))
+const logoTexture = textureLoader.load(require('./logo.jpg').default)
+const steelTexture = textureLoader.load(require('./steel.jpg').default)
 const logoMaterial = new Three.MeshLambertMaterial({ map: logoTexture })
 const steel = new Three.MeshLambertMaterial({ map: steelTexture })
 

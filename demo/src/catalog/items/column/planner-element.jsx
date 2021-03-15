@@ -2,7 +2,7 @@ import * as Three from 'three'
 import React from 'react'
 
 let textureLoader = new Three.TextureLoader()
-let mat = textureLoader.load(require('./copper.jpg'))
+let mat = textureLoader.load(require('./copper.jpg').default)
 let frameMaterial = new Three.MeshLambertMaterial({ map: mat })
 
 function makeObjectMaxLOD(RADIUS, HEIGHT) {

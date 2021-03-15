@@ -6,10 +6,10 @@ const DEPTH = 80
 const HEIGHT = 200
 
 const textureLoader = new Three.TextureLoader()
-const woodMaterial = textureLoader.load(require('./wood.jpg'))
-const bookTexture1 = textureLoader.load(require('./bookTexture1.jpg'))
-const bookTexture2 = textureLoader.load(require('./bookTexture2.jpg'))
-const bookTexture3 = textureLoader.load(require('./bookTexture3.jpg'))
+const woodMaterial = textureLoader.load(require('./wood.jpg').default)
+const bookTexture1 = textureLoader.load(require('./bookTexture1.jpg').default)
+const bookTexture2 = textureLoader.load(require('./bookTexture2.jpg').default)
+const bookTexture3 = textureLoader.load(require('./bookTexture3.jpg').default)
 
 const objectMaxLOD = makeObjectMaxLOD()
 const objectMinLOD = makeObjectMinLOD()
@@ -92,7 +92,7 @@ function makeObjectMinLOD() {
 
   let textureLoader = new Three.TextureLoader()
 
-  let woodMaterial = textureLoader.load(require('./wood.jpg'))
+  let woodMaterial = textureLoader.load(require('./wood.jpg').default)
 
   //Bookcase
   let backGeometry = new Three.BoxGeometry(0.03, 2, 0.8)

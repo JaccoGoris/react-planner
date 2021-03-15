@@ -2,7 +2,7 @@ import * as Three from 'three'
 import React from 'react'
 
 const textureLoader = new Three.TextureLoader()
-const front = textureLoader.load(require('./front.png'))
+const front = textureLoader.load(require('./front.png').default)
 const blackMaterial = new Three.MeshLambertMaterial({ color: 0x3d3d3d })
 
 function makeObjectMaxLOD(newWidth, newHeight, newDepth) {

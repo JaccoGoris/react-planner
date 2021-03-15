@@ -165,7 +165,9 @@ export default {
     }
 
     let textureLoader = new Three.TextureLoader()
-    let etichettaImage = textureLoader.load(require('./example_lim.png'))
+    let etichettaImage = textureLoader.load(
+      require('./example_lim.png').default
+    )
 
     let geometryPlane = new Three.PlaneGeometry(4, 3)
     let material = new Three.MeshLambertMaterial({

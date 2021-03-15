@@ -9,7 +9,7 @@ const red = new Three.MeshPhongMaterial({ color: 0xaa0000 })
 const grey = new Three.MeshLambertMaterial({ color: 0xaaaaaa })
 const black = new Three.MeshLambertMaterial({ color: 0x000000 })
 const textureLoader = new Three.TextureLoader()
-const frontTexture = textureLoader.load(require('./naspofront.png'))
+const frontTexture = textureLoader.load(require('./naspofront.png').default)
 
 const objectMaxLOD = makeObjectMaxLOD()
 const objectMiddleLOD = makeObjectMiddleLOD()

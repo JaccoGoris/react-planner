@@ -11,7 +11,7 @@ let boxMaterials2 = [grey, grey, grey, grey, grey, darkGrey]
 let boxMaterials3 = [grey, grey, grey, grey, darkGrey, grey]
 
 let textureLoader = new Three.TextureLoader()
-let lcdTexture = textureLoader.load(require('./monitor.png'))
+let lcdTexture = textureLoader.load(require('./monitor.png').default)
 
 //dimensions
 let width = 258

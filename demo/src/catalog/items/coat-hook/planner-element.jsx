@@ -105,7 +105,7 @@ export default {
     let newHeight = 0.1
     let radius = 0.0125
 
-    let texture = new Three.TextureLoader().load(require('./wood.jpg'))
+    let texture = new Three.TextureLoader().load(require('./wood.jpg').default)
     let materialTexture = new Three.MeshLambertMaterial({ map: texture })
 
     let geometry = new Three.BoxGeometry(newWidth, 1.5 * newHeight, newDepth)

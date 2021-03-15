@@ -6,7 +6,7 @@ const DEPTH = 40
 const HEIGHT = 70
 
 const textureLoader = new Three.TextureLoader()
-const Image = textureLoader.load(require('./bronze-texture.jpg'))
+const Image = textureLoader.load(require('./bronze-texture.jpg').default)
 const material = new Three.MeshLambertMaterial({ map: Image })
 
 const objectMaxLOD = makeObjectMaxLOD()

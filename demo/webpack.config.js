@@ -1,8 +1,7 @@
-const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
-const isWsl = require('is-wsl')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 const PAGE_TITLE = 'React Planner'
 const VENDORS_LIBRARIES = [
@@ -18,7 +17,7 @@ module.exports = (env, self) => {
   let isProduction = self.hasOwnProperty('mode')
     ? self.mode === 'production'
     : true
-  let port = self.hasOwnProperty('port') ? self.port : 8080
+  let port = self.hasOwnProperty('port') ? self.port : 9000
 
   if (isProduction) console.info('Webpack: Production mode')
   else console.info('Webpack: Development mode')
@@ -31,7 +30,7 @@ module.exports = (env, self) => {
     },
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: '[chunkhash].[name].js',
+      filename: '[contenthash].[name].js',
     },
     performance: {
       hints: isProduction ? 'warning' : false,
@@ -46,6 +45,7 @@ module.exports = (env, self) => {
       alias: {
         'react-planner': path.join(__dirname, '../src/index'),
       },
+      fallback: { path: require.resolve('path-browserify') },
     },
     module: {
       rules: [
@@ -79,7 +79,7 @@ module.exports = (env, self) => {
         },
         {
           test: /\.css$/,
-          use: [{ loader: 'style-loader/url' }, { loader: 'file-loader' }],
+          use: [{ loader: 'style-loader' }, { loader: 'file-loader' }],
         },
       ],
     },
@@ -91,21 +91,11 @@ module.exports = (env, self) => {
         inject: 'body',
         production: isProduction,
       }),
+      new NodePolyfillPlugin(),
     ],
     optimization: {
       minimize: isProduction,
-      splitChunks: {
-        cacheGroups: {
-          default: false,
-          commons: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendor',
-            chunks: 'all',
-            minSize: 10000,
-            reuseExistingChunk: true,
-          },
-        },
-      },
+      splitChunks: { chunks: 'all' },
     },
   }
 
@@ -124,18 +114,6 @@ module.exports = (env, self) => {
       isProduction: JSON.stringify(isProduction),
     })
   )
-
-  if (!isProduction) {
-    const url = `http://localhost:${port}`
-    if (!isWsl) {
-      config.plugins.push(new OpenBrowserPlugin({ url }))
-    } else {
-      console.warn(
-        'Unable to automatically open browser on Windows Subsystem for Linux'
-      )
-      console.warn(`Open your browser and navigate to ${url}`)
-    }
-  }
 
   return config
 }

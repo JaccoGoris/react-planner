@@ -64,7 +64,7 @@ function makeObjectMaxLOD() {
   body.add(cylinder5)
 
   const textureLoader = new Three.TextureLoader()
-  const gageImage = textureLoader.load(require('./gage-image.png'))
+  const gageImage = textureLoader.load(require('./gage-image.png').default)
 
   const geometry2 = new Three.PlaneGeometry(0.04, 0.04)
   const material2 = new Three.MeshLambertMaterial({
@@ -90,7 +90,7 @@ function makeObjectMaxLOD() {
   cylinder7.rotation.y += Math.PI / 2
   body.add(cylinder7)
 
-  const labelImage = textureLoader.load(require('./label-image.png'))
+  const labelImage = textureLoader.load(require('./label-image.png').default)
   labelImage.wrapS = Three.RepeatWrapping
   labelImage.wrapT = Three.RepeatWrapping
   labelImage.repeat.set(1, 1)

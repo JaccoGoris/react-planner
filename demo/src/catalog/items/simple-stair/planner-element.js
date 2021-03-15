@@ -161,7 +161,9 @@ export default {
     let stepPlaneMaterial = new Three.MeshBasicMaterial({
       side: Three.FrontSide,
     })
-    stepPlaneMaterial.map = loader.load(require('./textures/white-paint.jpg'))
+    stepPlaneMaterial.map = loader.load(
+      require('./textures/white-paint.jpg').default
+    )
     stepPlaneMaterial.needsUpdate = true
     stepPlaneMaterial.map.wrapS = Three.RepeatWrapping
     stepPlaneMaterial.map.wrapT = Three.RepeatWrapping
@@ -274,7 +276,9 @@ export default {
     )
 
     let closure1Material = new Three.MeshPhongMaterial({ side: Three.BackSide })
-    closure1Material.map = loader.load(require('./textures/white-paint.jpg'))
+    closure1Material.map = loader.load(
+      require('./textures/white-paint.jpg').default
+    )
     closure1Material.needsUpdate = true
     closure1Material.map.wrapS = Three.RepeatWrapping
     closure1Material.map.wrapT = Three.RepeatWrapping
@@ -407,7 +411,7 @@ let buildStepCover = (width, height, depth) => {
   )
   assignUVs(planeGeometry3)
 
-  planeMaterial.map = loader.load(require('./textures/marble.jpg'))
+  planeMaterial.map = loader.load(require('./textures/marble.jpg').default)
   planeMaterial.needsUpdate = true
   planeMaterial.map.wrapS = Three.RepeatWrapping
   planeMaterial.map.wrapT = Three.RepeatWrapping

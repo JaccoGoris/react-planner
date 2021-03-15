@@ -169,7 +169,9 @@ export default {
       etichetta.position.set(-0.1, 0.8, 0)
       plane1.add(etichetta)
 
-      var texture = new Three.TextureLoader().load(require('./recycle.png'))
+      var texture = new Three.TextureLoader().load(
+        require('./recycle.png').default
+      )
 
       var planeGeometry2 = new Three.PlaneGeometry(0.5, 0.5)
       var planeMaterial2 = new Three.MeshLambertMaterial({

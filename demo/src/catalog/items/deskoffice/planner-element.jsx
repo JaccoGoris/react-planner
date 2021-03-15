@@ -2,9 +2,9 @@ import * as Three from 'three'
 import React from 'react'
 
 const textureLoader = new Three.TextureLoader()
-const white = textureLoader.load(require('./white.jpg'))
+const white = textureLoader.load(require('./white.jpg').default)
 const whiteMaterial = new Three.MeshLambertMaterial({ color: 0x000000 })
-const wood = textureLoader.load(require('./wood.jpg'))
+const wood = textureLoader.load(require('./wood.jpg').default)
 const glassMaterial = new Three.MeshLambertMaterial({
   color: 0xc6c6c6,
   transparent: true,

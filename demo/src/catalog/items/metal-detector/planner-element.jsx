@@ -16,8 +16,8 @@ function makeObjectMaxLOD() {
   let metalDetector = new Three.Mesh()
 
   let textureLoader = new Three.TextureLoader()
-  let display1 = textureLoader.load(require('./display1.png'))
-  let display2 = textureLoader.load(require('./display2.png'))
+  let display1 = textureLoader.load(require('./display1.png').default)
+  let display2 = textureLoader.load(require('./display2.png').default)
 
   let cubeGeometryBase = new Three.BoxGeometry(0.72, 0.2, 0.4)
   let up = new Three.Mesh(cubeGeometryBase, grey)
