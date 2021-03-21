@@ -35,7 +35,7 @@ module.exports = (env, self) => {
     performance: {
       hints: isProduction ? 'warning' : false,
     },
-    devtool: isProduction ? 'source-map' : 'eval',
+    devtool: isProduction ? 'source-map' : 'source-map',
     devServer: {
       port: port,
       contentBase: path.join(__dirname, './dist'),

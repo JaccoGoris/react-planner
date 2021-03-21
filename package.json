@@ -2,10 +2,11 @@
   "name": "react-planner",
   "version": "2.1.2",
   "description": "react-planner is a React Component for plans design. Draw a 2D floorplan and navigate it in 3D mode.",
-  "main": "dist/lib/react-planner-library.js",
-  "module": "dist/lib/react-planner-library.js",
+  "main": "es/index.js",
+  "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "webpack serve --config demo/webpack.config.js --mode development --env development",
     "build-demo": "webpack --config demo/webpack.config.js --mode production  --env production",
@@ -86,6 +87,7 @@
     "react-tabs": "3.0.0",
     "redux": "4.0.5",
     "shortid": "2.2.14",
+    "styled-components": "^5.2.1",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
