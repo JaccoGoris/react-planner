@@ -1,12 +1,11 @@
 {
   "name": "react-planner",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "react-planner is a React Component for plans design. Draw a 2D floorplan and navigate it in 3D mode.",
-  "main": "es/index.js",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "webpack serve --config demo/webpack.config.js --mode development --env development",
     "build-demo": "webpack --config demo/webpack.config.js --mode production  --env production",
