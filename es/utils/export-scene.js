@@ -1,48 +1,44 @@
-import { ColladaExporter } from 'three/examples/jsm/exporters/ColladaExporter';
-import { xml2js, js2xml } from 'xml-js';
+// import { ColladaExporter } from 'three/examples/jsm/exporters/ColladaExporter';
+// import { xml2js, js2xml } from 'xml-js';
 
-import { saveAs } from 'file-saver';
-import { Project } from '../class/export';
-import { parseData } from '../components/viewer3d/scene-creator';
+// import { saveAs } from 'file-saver';
+// import { Project } from '../class/export';
+// import { parseData } from '../components/viewer3d/scene-creator';
 
-var exportScene = function exportScene(_ref) {
-  var state = _ref.state,
-      context = _ref.context,
-      catalog = _ref.catalog;
+// const exportScene = ({ state, context, catalog }) => {
+//   state = Project.unselectAll(state).updatedState;
+//   let actions = {
+//     areaActions: context.areaActions,
+//     holesActions: context.holesActions,
+//     itemsActions: context.itemsActions,
+//     linesActions: context.linesActions,
+//     projectActions: context.projectActions
+//   };
 
-  state = Project.unselectAll(state).updatedState;
-  var actions = {
-    areaActions: context.areaActions,
-    holesActions: context.holesActions,
-    itemsActions: context.itemsActions,
-    linesActions: context.linesActions,
-    projectActions: context.projectActions
-  };
+//   let scene = state.get('scene');
+//   // LOAD DATA
+//   let planData = parseData(scene, actions, catalog);
+//   setTimeout(() => {
+//     const { plan } = planData;
+//     plan.position.set(plan.position.x, 0.1, plan.position.z);
+//     const exporter = new ColladaExporter();
+//     exporter.parse(plan, ({ data }) => {
+//       let parsedFile = xml2js(data, { compact: true });
+//       parsedFile.COLLADA.asset['unit'] = {
+//         _attributes: { name: 'centimeter', meter: '0.01' }
+//       };
+//       let fixedData = js2xml(parsedFile, { compact: true, spaces: 4 });
 
-  var scene = state.get('scene');
-  // LOAD DATA
-  var planData = parseData(scene, actions, catalog);
-  setTimeout(function () {
-    var plan = planData.plan;
+//       const fileBlob = new Blob([fixedData], {
+//         type: 'text/plain;charset=utf-8'
+//       });
 
-    plan.position.set(plan.position.x, 0.1, plan.position.z);
-    var exporter = new ColladaExporter();
-    exporter.parse(plan, function (_ref2) {
-      var data = _ref2.data;
+//       saveAs(fileBlob, 'planner.DAE');
+//     });
+//   }, 1000);
+// };
 
-      var parsedFile = xml2js(data, { compact: true });
-      parsedFile.COLLADA.asset['unit'] = {
-        _attributes: { name: 'centimeter', meter: '0.01' }
-      };
-      var fixedData = js2xml(parsedFile, { compact: true, spaces: 4 });
+// export default exportScene;
 
-      var fileBlob = new Blob([fixedData], {
-        type: 'text/plain;charset=utf-8'
-      });
-
-      saveAs(fileBlob, 'planner.DAE');
-    });
-  }, 1000);
-};
-
-export default exportScene;
+var stub = function stub() {};
+export default stub;

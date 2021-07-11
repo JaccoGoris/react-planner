@@ -135,6 +135,19 @@ export default {
         unit: 'cm',
       },
     },
+    safeRadius: {
+      label: 'safe radius',
+      type: 'length-measure',
+      defaultValue: {
+        length: 0,
+        unit: 'cm',
+      },
+    },
+    safeShape: {
+      label: 'safe shape',
+      type: 'string',
+      defaultValue: 'box',
+    },
   },
 
   render2D: function (element, layer, scene) {
@@ -145,6 +158,18 @@ export default {
       strokeWidth: '2px',
       fill: '#84e1ce',
     }
+    let safe_area_style = {
+      stroke: element.selected ? '#F00' : '#000',
+      strokeWidth: '2px',
+      fill: 'none',
+    }
+    let safe_area_circle = {
+      stroke: element.selected ? '#F00' : '#000',
+      strokeWidth: '2px',
+      fill: 'none',
+    }
+    const safeRadius = element.properties.getIn(['safeRadius', 'length'])
+    const safeShape = element.properties.getIn(['safeShape'])
 
     return (
       <g transform={`translate(${-WIDTH / 2},${-DEPTH / 2})`}>
@@ -156,8 +181,27 @@ export default {
           height={DEPTH}
           style={rect_style}
         />
+        {safeShape === 'box' ? (
+          <rect
+            key="2"
+            x={-safeRadius / 2}
+            y={-safeRadius / 2}
+            rx={safeRadius / 5}
+            ry={safeRadius / 5}
+            width={WIDTH + safeRadius}
+            height={DEPTH + safeRadius}
+            style={safe_area_style}
+          />
+        ) : (
+          <circle
+            cx={WIDTH / 2}
+            cy={DEPTH / 2}
+            r={safeRadius}
+            style={safe_area_circle}
+          />
+        )}
         <text
-          key="2"
+          key="3"
           x="0"
           y="0"
           transform={`translate(${WIDTH / 2}, ${
